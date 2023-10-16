@@ -1,0 +1,18 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background-color: #1a1818;
+    color: whitesmoke;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body * section{
+    margin-left: 7.5%;
+    margin-right: 7.5%;
+    font-family: Arial, Helvetica, sans-serif;
+}
+html, body { height: 100%; }

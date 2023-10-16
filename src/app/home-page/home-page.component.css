@@ -1,0 +1,82 @@
+.CommentsAndInfo{
+    padding-top: 75px;
+    position: absolute;
+    float: right;
+    background-color:  whitesmoke;
+    color: black;
+    height: 100vh;
+    min-width: 60vh;
+    max-width: 60vh;
+    padding-left: 20px;
+}
+
+
+
+.VideoPlayer{
+    background-color: black;
+}
+
+.VideoInfo{
+    padding-top: 50px;
+}
+
+.VideoPlayer video{
+float: right;
+min-height: 100vh;
+min-width: 60vh;
+max-width: 60vh;
+z-index: -1;
+
+}
+.VideoPlayer .buttons{
+    position: absolute;
+    width: 100vh;
+    z-index: 1;
+    bottom: 0;
+}
+
+ .buttons button{
+    width: 15%;
+    height: 50px;
+}
+
+.Videos {
+    position: relative;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100vh; 
+    overflow: hidden;
+}
+
+.Videos div {
+    display: inline-block;
+}
+
+.Background{
+    width: 100%;
+    height: 100%;
+    position: fixed;
+}
+
+.Back{
+    background-color: rgb(56, 201, 189);
+    border: 2px;
+    border-color:  rgb(255, 184, 61);
+    border-style: solid;
+}
+
+.Dislike{
+    background-color: rgb(255, 78, 78);
+}
+.Like{
+    background-color: rgb(0, 255, 0);
+}
+.Next{
+    background-color: rgb(56, 201, 189);
+    border: 2px;
+    border-color:  rgb(255, 184, 61);
+    border-style: solid;
+}

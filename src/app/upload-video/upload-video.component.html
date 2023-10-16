@@ -1,0 +1,22 @@
+<div class="Background">
+</div>
+
+
+
+<div class="MainFrame">
+    <div class="UnderNavBar panel"> 
+        <label for="Title">Title: </label> <br/>
+        <input type="text" id="Title" name="Title" [(ngModel)]="data.title"><br/>
+
+        <label for="Description">Description: </label> <br/>
+        <textarea id="text" name="text" rows="6" cols="50" maxlength="128" type="text" id="Description" name="Description" [(ngModel)]="data.description"> 
+
+        </textarea><br/>
+
+        <input class="form-control" type="file" (change)="PrepareVideo($event)" /><br/>
+
+        <button (click)="UploadVideo()">Upload the video</button><br/>
+
+    </div>
+</div>
+

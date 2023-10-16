@@ -1,0 +1,25 @@
+<div>
+    <ul>
+        <li><a routerLink="/" class="Logo-Container">
+            <img class="Logo" src="../../assets/Smort_Logo.png" width="70" height="70">
+        </a></li>
+        <li class="User dropdown" *ngIf="userData.UserName != ''">
+             {{userData.UserName}}
+            <img class="pf" [src]="userData.ProfilePicture" width="75px" height="75px">
+
+            <div class="dropdown-content">
+                <a href="#">My Account</a>
+                <a href="/upload">Upload Video</a>
+                <a href="/EditAccount">Edit Account</a>
+                <a href="#" (click)="SignOut()">Sign Out</a>
+
+              </div>
+        </li>
+        <li class="SignIn" *ngIf="userData.UserName == ''">
+            <a routerLink="/login">Please Sign In</a>
+        </li>
+        
+    </ul>
+    
+
+</div>

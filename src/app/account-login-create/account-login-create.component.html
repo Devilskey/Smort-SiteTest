@@ -1,0 +1,29 @@
+
+
+<div>
+    <div class="MainLogin">
+        <div class="BackgroundImg">
+            <img src="../../assets/Smort_Logo.png"/>
+        </div>
+
+        <div class="Panel"> 
+            <label for="Email">Email: </label>
+            <input type="text" id="Email" name="Email" [(ngModel)]="data.email">
+
+            <label for="Password">Password: </label>
+            <input type="password" id="Password" name="Password" [(ngModel)]="data.password">
+
+            <div  *ngIf="LoginScherm">
+                <button (click)="Login()">Login</button><br/>
+                <button (click)="SwitchLogin(false)">Create an account</button><br/>
+            </div>
+            <div  *ngIf="!LoginScherm">
+                <label for="username">username:</label>
+                <input type="text" id="username" name="username"  [(ngModel)]="data.username"><br/>
+                <input class="form-control" type="file" (change)="prepareImage($event)" /><br/>
+                <button (click)="CreateAccount()">CreateAccount</button><br/>
+                <button (click)="SwitchLogin(true)">Login</button><br/>
+        </div>
+    </div>
+    </div>
+</div>
