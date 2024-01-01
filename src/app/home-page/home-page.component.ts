@@ -1,6 +1,7 @@
 import { Component, OnInit  } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Video } from '../Objects/VideosObject';
+import { Api } from '../Statics/Api.Statics';
 
 
 @Component({
@@ -10,27 +11,30 @@ import { Video } from '../Objects/VideosObject';
 })
 export class HomePageComponent implements OnInit{
   VideoData: Video[] = [];
-  VideoPlaying: any
+  VideoPlaying!: Video;
   VideoLink: string = "";
   videoNumber:number = 0;
   CreatedAt!: string;
   Title: string = "";
+  UsernameUploaded: string = "";
+  UserPage: string = "";
   Description: string = "";
 
 
   constructor(private http: HttpClient){ }
 
   ngOnInit(): void {
-    this.http.get<any>("http://devilskey.nl:7245/Video/GetVideoList").subscribe((data:Video[]) => {
+    this.http.get<any>(`${Api.URL}Video/GetVideoList`).subscribe((data:Video[]) => {
     this.VideoData = data;
 
     this.VideoPlaying = this.VideoData[0];
-    this.VideoLink = "http://devilskey.nl:7245/Video/GetVideo?videoId=" + this.VideoPlaying.Id;
+    this.VideoLink = `${Api.URL}Video/GetVideo?videoId=` + this.VideoPlaying.Id;
 
     this.Title =  this.VideoPlaying.Title;
     this.CreatedAt =  this.VideoPlaying.Created_At;
     this.Description =  this.VideoPlaying.Description;
-      
+    this.UsernameUploaded = this.VideoPlaying.Username;
+    this.UserPage = `/accounts/${this.VideoPlaying.User_Id}`;
     });
   }
 
@@ -44,7 +48,7 @@ export class HomePageComponent implements OnInit{
     console.log(this.videoNumber)
     console.log(this.VideoData)
     if(this.videoNumber === this.VideoData.length-1)
-      this.http.get<any>("http://devilskey.nl:7245/Video/GetVideoList").subscribe((data:Video[]) => {
+      this.http.get<any>(`${Api.URL}Video/GetVideoList`).subscribe((data:Video[]) => {
         this.VideoData.push(data[0]);
         this.videoNumber += 1;
 
@@ -61,7 +65,7 @@ export class HomePageComponent implements OnInit{
   }
 
   SwitchVideo(NewVideo:Video){
-    this.VideoLink = "http://devilskey.nl:7245/Video/GetVideo?videoId=" + NewVideo.Id;
+    this.VideoLink = `${Api.URL}Video/GetVideo?videoId=${NewVideo.Id}`;
 
     console.log(this.VideoLink);
 
@@ -78,7 +82,7 @@ export class HomePageComponent implements OnInit{
     this.videoNumber -= 1;
 
     this.VideoPlaying = this.VideoData[this.videoNumber];
-    this.VideoLink = "http://devilskey.nl:7245/Video/GetVideo?videoId=" + this.VideoPlaying.Id;
+    this.VideoLink = `${Api.URL}Video/GetVideo?videoId=${this.VideoPlaying.Id}`;
 
     this.Title =  this.VideoPlaying.Title;
     this.CreatedAt =  this.VideoPlaying.Created_At;

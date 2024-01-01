@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { HttpClient, HttpHeaders} from '@angular/common/http';
 import { User } from '../Statics/User.Statics';
+import { Api } from '../Statics/Api.Statics';
 
 
 @Component({
@@ -36,7 +37,7 @@ export class UploadVideoComponent {
 
     console.log(header)
 
-    this.Http.post("http://devilskey.nl:7245/Videos/UploadVideo", this.data, { headers: header, responseType: 'text' })
+    this.Http.post(`${Api.URL}Videos/UploadVideo`, this.data, { headers: header, responseType: 'text' })
     .subscribe((data) => {
       if (typeof data === 'string') {
         if(data === "Video Saved")  

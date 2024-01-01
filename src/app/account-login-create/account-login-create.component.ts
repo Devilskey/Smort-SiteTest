@@ -2,6 +2,7 @@ import { Component, inject  } from '@angular/core';
 import { HttpClient, HttpHeaders} from '@angular/common/http';
 import { empty } from 'rxjs';
 import { User } from '../Statics/User.Statics';
+import { Api } from '../Statics/Api.Statics';
 
 @Component({
   selector: 'app-account-login-create',
@@ -22,7 +23,7 @@ export class AccountLoginCreateComponent {
    constructor( private Http: HttpClient) { }
 
   Login() {
-    this.Http.post("http://devilskey.nl:7245/users/Login", { email: this.data.email, password: this.data.password }, { responseType: 'text' }).subscribe((data) => {
+    this.Http.post(`${Api.URL}users/Login`, { email: this.data.email, password: this.data.password }, { responseType: 'text' }).subscribe((data) => {
         if (typeof data === 'string') {
           console.log("Yes " + data);
           User.token = data;
@@ -34,7 +35,7 @@ export class AccountLoginCreateComponent {
             'Authorization': `Bearer ${data}`
           });
 
-          this.Http.get<any>("http://devilskey.nl:7245/users/GetMyProfile", {headers: header}).subscribe((LoginData) => {
+          this.Http.get<any>(`${Api.URL}users/GetMyProfile`, {headers: header}).subscribe((LoginData) => {
               if(LoginData != empty){
                 console.log(LoginData)
                 User.UserName = LoginData[0].Username;
@@ -50,7 +51,7 @@ export class AccountLoginCreateComponent {
   CreateAccount(){
     console.log(this.data.profilePicture);
 
-   this.Http.post("http://devilskey.nl:7245/users/CreateAccount", this.data, { responseType: 'text' })
+   this.Http.post(`${Api.URL}users/CreateAccount`, this.data, { responseType: 'text' })
     .subscribe((data) => {
       if (typeof data === 'string') {
         if(data === "User Created")  
