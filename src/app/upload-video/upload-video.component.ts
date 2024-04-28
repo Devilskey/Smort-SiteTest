@@ -11,19 +11,27 @@ import { Api } from '../Statics/Api.Statics';
 })
 export class UploadVideoComponent {
   selectVideo!:File;
+  selectImage!: File;
   data = {
     fileName: "",
     mediaData:  null as string | null,
     title: "",
-    description: ""
+    description: "",
+    Thumbnail:  null as string | null,
+
   }
 
 
   constructor( private Http: HttpClient) { }
 
+  PrepareThumbnail(event:any){
+    this.selectVideo = event.target.files[0];
+    this.encodeFileToBase64Image();
+  }
+
   PrepareVideo(event:any){
       this.selectVideo = event.target.files[0];
-      this.encodeFileToBase64();
+      this.encodeFileToBase64Video();
   }
 
   UploadVideo(){
@@ -46,7 +54,24 @@ export class UploadVideoComponent {
     });
   }
 
-  encodeFileToBase64() {
+  encodeFileToBase64Image() {
+    if (this.selectVideo) {
+      const reader = new FileReader();
+      reader.onload = (event) => {
+        if (event.target?.result) {
+          this.data.fileName = this.selectVideo.name;
+          const Image = event.target.result as string;
+          const parts = Image.split(',');
+          if (parts.length === 2) {
+            this.data.Thumbnail = parts[1];
+          }
+        }
+      };
+      reader.readAsDataURL(this.selectVideo);
+    }
+  }
+
+  encodeFileToBase64Video() {
     if (this.selectVideo) {
       const reader = new FileReader();
       reader.onload = (event) => {

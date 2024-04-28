@@ -7,10 +7,11 @@ import { AccountsComponent } from './accounts/accounts.component';
 import { EditAccountComponent } from './edit-account/edit-account.component';
 
 const routes: Routes = [
+  {path: 'video/:id', component:HomePageComponent},
   {path: '', component:HomePageComponent},
   {path: 'login', component:AccountLoginCreateComponent},
   {path: 'upload', component:UploadVideoComponent},
-  {path: 'accounts/:Id', component:AccountsComponent},
+  {path: 'accounts/:id', component:AccountsComponent},
   {path: 'EditAccount', component:EditAccountComponent}
 ];
 

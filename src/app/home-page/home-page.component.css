@@ -1,58 +1,91 @@
-.CommentsAndInfo{
-    padding-top: 75px;
-    position: absolute;
-    float: right;
-    background-color:  whitesmoke;
-    color: black;
-    height: 100vh;
-    min-width: 60vh;
-    max-width: 60vh;
-    padding-left: 20px;
-}
-
-
-
-.VideoPlayer{
+.VideoPlayer {
     background-color: black;
-}
-
-.VideoInfo{
-    padding-top: 50px;
-}
-
-.VideoPlayer video{
-float: right;
-min-height: 100vh;
-min-width: 60vh;
-max-width: 60vh;
-z-index: -1;
 
 }
-.VideoPlayer .buttons{
-    position: absolute;
-    width: 100vh;
-    z-index: 1;
-    bottom: 0;
+
+section {
+    display: flex;
+    justify-content: center;
 }
 
- .buttons button{
-    width: 15%;
-    height: 50px;
+.VideoList{
+    height: 87vh;        
+    video {
+        object-fit: cover;
+        height: 100%;
+        width:100%;
+    }
 }
 
 .Videos {
-    position: relative;
-    top: 0;
-    left: 0;
-    height: 100vh;
-    margin-left: auto;
-    margin-right: auto;
-    width: 100vh; 
+    border-radius: 10px;
+
+    margin-top: 90px;
+    width: 700px;
     overflow: hidden;
+
+    .VideoPlayer {
+        position: relative;
+
+    }
 }
 
-.Videos div {
-    display: inline-block;
+.VideoControls{
+    button {
+        width: 50%;
+        height: 50px;
+    }
+}
+
+.reaction{
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    display: flex;
+    flex-direction: column;
+
+    button{
+        height: 50px;
+        width: 75px;
+        margin-bottom: 10px; 
+        background-color: #b1b1b1ad;
+        border-radius: 50px;
+        border: none;
+        svg {
+            margin: auto;
+        }
+      }
+      button:hover{
+      background-color: #d3d3d3ee;
+    }
+  }
+
+
+.VideoInfo{
+    padding-bottom: 60px;
+    padding-top: 20px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 40px;
+    background-image: linear-gradient(#00000000, #000000);
+
+    Info{
+        flex-direction: column;
+    }
+    
+}
+.User{
+    margin-left: 20px;
+    color: white;
+}
+.title{
+    margin-left: 20px;
+    margin-bottom: 10px;
+    font-size: 25px;
 }
 
 .Background{
@@ -61,22 +94,3 @@ z-index: -1;
     position: fixed;
 }
 
-.Back{
-    background-color: rgb(56, 201, 189);
-    border: 2px;
-    border-color:  rgb(255, 184, 61);
-    border-style: solid;
-}
-
-.Dislike{
-    background-color: rgb(255, 78, 78);
-}
-.Like{
-    background-color: rgb(0, 255, 0);
-}
-.Next{
-    background-color: rgb(56, 201, 189);
-    border: 2px;
-    border-color:  rgb(255, 184, 61);
-    border-style: solid;
-}

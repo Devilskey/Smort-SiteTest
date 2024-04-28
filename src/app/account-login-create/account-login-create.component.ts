@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders} from '@angular/common/http';
 import { empty } from 'rxjs';
 import { User } from '../Statics/User.Statics';
 import { Api } from '../Statics/Api.Statics';
+import { GetProfileObject } from '../Objects/GetProfileObject';
 
 @Component({
   selector: 'app-account-login-create',
@@ -16,11 +17,10 @@ export class AccountLoginCreateComponent {
     email:  "",
     password:  "",
     username:  "",
-    profilePicture: null as string | null
+    profilePicture: "",
   }
 
-
-   constructor( private Http: HttpClient) { }
+  constructor( private Http: HttpClient) { }
 
   Login() {
     this.Http.post(`${Api.URL}users/Login`, { email: this.data.email, password: this.data.password }, { responseType: 'text' }).subscribe((data) => {
@@ -35,12 +35,13 @@ export class AccountLoginCreateComponent {
             'Authorization': `Bearer ${data}`
           });
 
-          this.Http.get<any>(`${Api.URL}users/GetMyProfile`, {headers: header}).subscribe((LoginData) => {
-              if(LoginData != empty){
+          this.Http.get<GetProfileObject>(`${Api.URL}users/GetMyProfile`, {headers: header}).subscribe((LoginData:GetProfileObject) => {
+              if(LoginData != null){
                 console.log(LoginData)
-                User.UserName = LoginData[0].Username;
-                window.localStorage.setItem('Username', LoginData[0].Username);
-                const PictureUse = "data:image/png;base64," + LoginData[0].Profile_Picture;
+                window.localStorage.setItem('id', LoginData.username);
+                User.UserName = LoginData.username;
+                window.localStorage.setItem('username', LoginData.username);
+                const PictureUse = `${Api.URL}Images/GetImage?ImageId=${LoginData.profile_Picture}`;
                 User.ProfilePicture =  PictureUse;
                 window.localStorage.setItem('pic',  PictureUse);
 

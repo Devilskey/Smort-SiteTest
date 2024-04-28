@@ -17,6 +17,23 @@ export class NavBarComponent implements OnInit{
     console.log(User.UserName)
   }
 
+  MenuOpen() {
+    var x = document.getElementById("dropdown-content")!;
+    console.log( x.style.display )
+    x.style.display = "flex";
+
+  }
+
+  MenuClose() {
+    var x = document.getElementById("dropdown-content")!;
+    x.style.display = "none";
+  }
+
+  toggleMenu() {
+    var x = document.getElementById("dropdown-content")!;
+    x.style.display = "flex";
+  }
+
   SignOut(){
     window.localStorage.removeItem('token')
     window.localStorage.removeItem('Username');

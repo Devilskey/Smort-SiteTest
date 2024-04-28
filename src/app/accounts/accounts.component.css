@@ -1,5 +1,65 @@
-* {
+.Page {
     padding-top: 80px;
     height: 100%;
     width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.User {
+    display: flex;
+    align-items: center; 
+    flex-direction: column;
+    padding: 10px;
+    border-bottom: solid white;
+}
+
+.Actions {
+    display: flex;
+    font-size: 30px;
+}
+
+.Actions button {
+    font-size: 30px;
+    margin-right: 20px;
+}
+
+.User img {
+    border-radius: 50%;
+    width: 300px;
+}
+
+.UserContent{
+    padding: 5%;
+    color: black;
+    flex-grow: 1; 
+    background-color: #262323;
+
+}
+
+.ContentList{
+    display: inline-grid;
+    grid-template-columns: repeat(clamp(1, 5, 7), minmax(200px, 2fr));
+    gap: 20px;
+}
+
+.VideoLink {
+    background-color: rgb(52, 52, 53);
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+}
+
+.VideoLink  h1{
+    text-align: center;
+    color: whitesmoke;
+}
+
+
+.VideoLink img{
+    padding: 5px;
+    width: 98%;
+    height: 98%;
+    margin-left: auto;
+    margin-right: auto;
 }

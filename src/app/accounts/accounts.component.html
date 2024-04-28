@@ -1,4 +1,22 @@
-<p> {{UserId}} accounts works!
-
-</p>
- 
+<div class="Page">
+    <div class="User">
+        <img [src]="Account.Profilepicture">
+        <h1>{{Account.UserName}}</h1>
+        <div class="Actions">
+                <button *ngIf=" this.IsFollowing == false && AreFollowButtonsNeeded()" (click)="FollowUser()">Follow</button>
+                <button *ngIf=" this.IsFollowing == true && AreFollowButtonsNeeded()" (click)="UnFollowUser()">unfollow</button>           
+         <div>{{Account.FollowerCount}} :Followers</div>  
+        </div>
+    </div>
+    <div class="UserContent">
+        <div class="ContentList" *ngIf="Thumbnails != null">
+            <a class="VideoLink" 
+            *ngFor="let Thumbnail of Thumbnails"
+            [href]="'video/' +Thumbnail.Id">
+                <img *ngIf="Thumbnail.Thumbnail != null" [src]="ApiUrlGetThumbnail+Thumbnail.Thumbnail" alt="">
+                <img *ngIf="Thumbnail.Thumbnail == null" src="../../assets/Smort_Logo.png" alt="">
+                <h1> {{Thumbnail.Title}} </h1>  
+            </a>
+        </div>
+    </div>
+</div>
